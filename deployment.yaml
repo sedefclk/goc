@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goc
+spec:
+  selector:
+    matchLabels:
+      app: goc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: goc
+    spec:
+      containers:
+        - name: goc
+          image: sedefcelikbil458/sedef:latest
+          imagePullPolicy: Always
+          ports:
+            - name: https
+              containerPort: 443
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 200m
+              memory: 1Gi
+            limits:
+              cpu: 1
+              memory: 1Gi
